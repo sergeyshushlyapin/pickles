@@ -159,3 +159,29 @@ Scenario: Somewhat malformed Markdown Tables should be formatted as HTML Tables 
           <ul id="scenarios" />
         </div>
         """
+
+Scenario: Internal links should be Formatted as Markdown
+
+  Given I have this feature description
+        """
+        In order to navigate across documentation pages
+        As a Pickles user
+        I want to see the inner links written in markdown rendered as HTML
+        
+        This feature should have some internal link to [[Another Feature]] that get displayed properly
+       
+        """
+	When I generate the documentation
+	Then the result should be
+       """
+       <div id="feature">
+         <h1>a feature</h1>
+         <div class="description">
+           <p>In order to navigate across documentation pages
+       As a Pickles user
+       I want to see the inner links written in markdown rendered as HTML</p>
+           <p>This feature should have some internal link to <a href="#">Another Feature</a> that get displayed properly</p>
+         </div>
+         <ul id="scenarios" />
+       </div>
+       """

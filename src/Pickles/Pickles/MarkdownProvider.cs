@@ -26,7 +26,7 @@ namespace PicklesDoc.Pickles
             this.markdown = new MarkdownDeep.Markdown { ExtraMode = true, SafeMode = true };
         }
 
-        public string Transform(string text)
+        public virtual string Transform(string text)
         {
             string transform = this.markdown.Transform(text);
 
